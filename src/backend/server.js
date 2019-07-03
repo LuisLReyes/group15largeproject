@@ -3,16 +3,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const PORT = 4000;
 const chatroomRoutes = express.Router();
+const PORT = 4000;
 
 let Chatroom = require('./chatroom.model');
 
 app.use(cors());
 app.use(bodyParser.json());
-
-console.log("server.js loaded");
-
 
 mongoose.connect('mongodb://group15:group15password@ds119660.mlab.com:19660/heroku_t5txprc7', { useNewUrlParser: true });
 const connection = mongoose.connection;
@@ -23,10 +20,6 @@ connection.once('open', function() {
 
 
 //API Routes
-
-
-
-
 chatroomRoutes.route('/').get(function(req,res){
     Chatroom.find(function(err,chatroom){
         if(err){
@@ -45,7 +38,7 @@ chatroomRoutes.route('/:id').get(function(req,res){
     });
 });
 
-chatroomRoutes.route('/add').get(function(req,res){
+chatroomRoutes.route('/add').post(function(req,res){
     let chatroom = new Chatroom(req.body);
     chatroom.save()
         .then(chatroom => {
