@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const PORT = 4000;
+const chatroomRoutes = express.Router();
+
+let Chatroom = require('./chatroom.model');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,7 +24,7 @@ connection.once('open', function() {
 
 //API Routes
 
-const chatroomRoutes = express.Router();
+
 
 
 chatroomRoutes.route('/').get(function(req,res){
