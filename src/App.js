@@ -32,7 +32,7 @@ class App extends Component {
           </nav>
           <br/>
         <Route path="/" exact component={elementOne} />
-        <Route path="/element2/:id" component={elementTwo} />
+        <Route path="/element2" component={elementTwo} />
         <Route path="/element3" component={elementThree} />
         </div>
       </Router>
