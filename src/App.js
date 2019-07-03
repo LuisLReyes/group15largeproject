@@ -15,7 +15,7 @@ class App extends Component {
         
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://google.com" target="_blank">
+            <a className="navbar-brand" href="https://google.com" target="_blank">
               {/*<img src={} width="30" height="30" alt="google.com" />*/}
             </a>
             <Link to="/" className="navbar-brand">Skeleton for Group 15</Link>
