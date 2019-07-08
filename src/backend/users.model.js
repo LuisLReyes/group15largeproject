@@ -1,19 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let Chatroom = new Schema({
-    room_name: {
+let User = new Schema({
+    first_name: {
         type: String
     },
-    room_type: {
+    last_name: {
         type: String
     },
-    owner: {
+    email: {
         type: String
     },
-    chat_log: {
+    password: {
         type: String
     }
 });
 
-module.exports = mongoose.model('Chatroom', Chatroom);
+module.exports = mongoose.model('User', User);
