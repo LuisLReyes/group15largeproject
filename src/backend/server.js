@@ -12,7 +12,7 @@ let Chatroom = require('./chatroom.model');
 let User = require('./users.model');
 let Chatlog = require('./chatlog.model');
 
-app.use(cors());
+app.use(cors()); 
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://group15:group15password@ds119660.mlab.com:19660/heroku_t5txprc7', { useNewUrlParser: true });
