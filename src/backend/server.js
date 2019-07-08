@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const chatroomRoutes = express.Router();
+const chatlogRoutes = express.Router();
+const userRoutes = express.Router();
 const PORT = 4000;
 
 let Chatroom = require('./chatroom.model');
