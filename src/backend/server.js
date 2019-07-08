@@ -7,6 +7,8 @@ const chatroomRoutes = express.Router();
 const PORT = 4000;
 
 let Chatroom = require('./chatroom.model');
+let User = require('./users.model');
+let Chatlog = require('./chatlog.model');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -19,7 +21,8 @@ connection.once('open', function() {
 });
 
 
-//API Routes
+//Chatroom Functions
+//Get all chatrooms
 chatroomRoutes.route('/').get(function(req,res){
     Chatroom.find(function(err,chatroom){
         if(err){
@@ -31,6 +34,7 @@ chatroomRoutes.route('/').get(function(req,res){
     });
 });
 
+//Get a chatroom by ID
 chatroomRoutes.route('/:id').get(function(req,res){
     let id = req.params.id;
     Chatroom.findById(id, function(err, chatroom){
@@ -38,18 +42,88 @@ chatroomRoutes.route('/:id').get(function(req,res){
     });
 });
 
+//Add a new chatroom
 chatroomRoutes.route('/add').post(function(req,res){
     let chatroom = new Chatroom(req.body);
     chatroom.save()
         .then(chatroom => {
-            res.status(200).json({'chatroom':'chatroom added successfully'});
+            res.status(200).json({'message':'chatroom added successfully'});
         })
         .catch(err => {
             res.status(400).send('adding new chat failed');
         });
 });
 
+//Chatlog Functions
+//Get all chatlogs
+chatlogRoutes.route('/').get(function(req,res){
+    Chatlog.find(function(err,chatlog){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(chatlog);
+        }
+    });
+});
+
+//Get a chatlog by ID
+chatlogRoutes.route('/:id').get(function(req,res){
+    let id = req.params.id;
+    Chatlog.findById(id, function(err, chatlog){
+        res.json(chatlog);
+    });
+});
+
+//Add a new chatlog
+chatlogRoutes.route('/add').post(function(req,res){
+    let chatlog = new Chatlog(req.body);
+    chatlog.save()
+        .then(chatlog => {
+            res.status(200).json({'message':'chatlog added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('adding new chatlog failed');
+        });
+});
+
+//User Functions
+//Get all users
+userRoutes.route('/').get(function(req,res){
+    User.find(function(err,user){
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(user);
+        }
+    });
+});
+
+//Get a user by ID
+userRoutes.route('/:id').get(function(req,res){
+    let id = req.params.id;
+    User.findById(id, function(err, user){
+        res.json(user);
+    });
+});
+
+//Add a new user
+userRoutes.route('/add').post(function(req,res){
+    let user = new User(req.body);
+    user.save()
+        .then(user => {
+            res.status(200).json({'message':'user added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('adding new user failed');
+        });
+});
+
+
 app.use('/chatroom', chatroomRoutes);
+app.use('/chatlog', chatlogRoutes);
+app.use('/user', userRoutes);
 
 app.listen(PORT, function() {
     console.log("Server is running on Port: " + PORT);
