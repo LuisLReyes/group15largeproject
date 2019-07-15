@@ -56,6 +56,28 @@ chatroomRoutes.route('/add').post(function(req,res){
         });
 });
 
+//Add a chat entry into a room
+chatroomRoutes.route('/newmessage/:id').post(function(req,res){
+    Chatroom.findById(req.params.id, function(err, chatroom){
+        if(!chatroom){
+            res.status(404).send("Chatroom of that ID is not found.");
+        }
+        else{
+            let chatlog = new Chatlog(req.body);
+
+            Chatroom.update(
+                { _id: req.params.id},
+                { $push: {chat_log: chatlog} }
+            ).then(chatroom => {
+                res.json('Chatlog entry added');
+            })
+            .catch(err =>{
+                res.status(400).send("Chatlog failed to add new entry");
+            });
+        };
+    });
+});
+
 //Chatlog Functions
 //Get all chatlogs
 chatlogRoutes.route('/').get(function(req,res){
@@ -88,6 +110,8 @@ chatlogRoutes.route('/add').post(function(req,res){
             res.status(400).send('adding new chatlog failed');
         });
 });
+
+
 
 //User Functions
 //Get all users
