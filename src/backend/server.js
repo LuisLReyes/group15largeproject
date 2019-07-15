@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const chatroomRoutes = express.Router();
 const chatlogRoutes = express.Router();
 const userRoutes = express.Router();
+const session = require('express-session')
 const PORT = 4000;
 
 let Chatroom = require('./chatroom.model');
@@ -14,6 +15,12 @@ let Chatlog = require('./chatlog.model');
 
 app.use(cors()); 
 app.use(bodyParser.json());
+
+app.use(session({
+    secret: 'pilebunker',
+    resave: true,
+    saveUninitialized: false
+  }));
 
 mongoose.connect('mongodb://group15:group15password@ds119660.mlab.com:19660/heroku_t5txprc7', { useNewUrlParser: true });
 const connection = mongoose.connection;
@@ -146,7 +153,17 @@ userRoutes.route('/add').post(function(req,res){
         });
 });
 
-
+//Login a user
+userRoutes.route('/login').post(function(req,res){
+    User.authenticate(req.body.user_name,req.body.password, function(error, user){
+        if( error || !user){
+            return res.status(401).json({'message':'Login failed'});
+        } else {
+            req.session.userId = user._id;
+            return res.status(200).json({'message':'Login Successful'});
+        }
+    })
+})
 app.use('/chatroom', chatroomRoutes);
 app.use('/chatlog', chatlogRoutes);
 app.use('/user', userRoutes);
