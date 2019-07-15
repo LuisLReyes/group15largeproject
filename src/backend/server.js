@@ -65,7 +65,7 @@ chatroomRoutes.route('/newmessage/:id').post(function(req,res){
         else{
             let chatlog = new Chatlog(req.body);
 
-            Chatroom.update(
+            Chatroom.updateOne(
                 { _id: req.params.id},
                 { $push: {chat_log: chatlog} }
             ).then(chatroom => {
