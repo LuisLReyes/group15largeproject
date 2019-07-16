@@ -29,6 +29,14 @@ connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 });
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  
+
+
 
 //Chatroom Functions
 //Get all chatrooms
@@ -166,7 +174,7 @@ userRoutes.route('/login').post(function(req,res){
 })
 
 //Logout and kill the session
-router.get('/logout', function (req,res,next){
+userRoutes.get('/logout', function (req,res,next){
     if(req.session){
         req.session.destroy(function(err){
             if(err){
