@@ -164,6 +164,20 @@ userRoutes.route('/login').post(function(req,res){
         }
     })
 })
+
+//Logout and kill the session
+router.get('/logout', function (req,res,next){
+    if(req.session){
+        req.session.destroy(function(err){
+            if(err){
+                console.log(err);
+                return err;
+            } else{
+                //add what to do on logout
+            }
+        })
+    }
+})
 app.use('/chatroom', chatroomRoutes);
 app.use('/chatlog', chatlogRoutes);
 app.use('/user', userRoutes);
