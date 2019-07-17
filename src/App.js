@@ -42,7 +42,7 @@ class App extends Component {
                   <p>Your Groups   </p>
                 </div>
                 <div class="col">
-                  <button class="btn-primary btn-small">
+                  <button class="btn-primary btn-sm">
                     +
                   </button>
                 </div>
