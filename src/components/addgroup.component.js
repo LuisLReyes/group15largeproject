@@ -19,14 +19,14 @@ export default class ElementThree extends Component {
 		});
 	}
 
-
     render() {
         return (
             <div>
-                <p>Search page</p>
-                <button class="btn btn-primary btn-block"> 
-                <p>Create New Study Group</p>
+                <button type="button"class="btn btn-primary btn-block mb-4" > 
+                	Create New Study Group
                 </button>
+
+                <input type="text" class="form-control" placeholder="Search Group" aria-label="Search" />
             </div>
         )
     }
