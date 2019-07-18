@@ -1,2 +1,0 @@
-web: npm start
-web: cd src && cd backend && npm start
