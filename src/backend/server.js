@@ -166,6 +166,7 @@ userRoutes.route('/login').post(function(req,res){
     User.authenticate(req.body.user_name,req.body.password, function(error, user){
         if( error || !user){
             console.log('Login Error: ' + error);
+            console.log('Failed user: ' + user);
             return res.status(401).json({'message':'Login failed'});
         } else {
             req.session.userId = user._id;
