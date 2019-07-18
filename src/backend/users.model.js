@@ -40,14 +40,18 @@ UserSchema.statics.authenticate = function (user_name, password, callback) {
     User.findOne({ user_name: user_name })
       .exec(function (err, user) {
         if (err) {
+          console.log('Error: Unknown error when trying to find user: ' + err);
           return callback(err)
         } else if (!user) {
+          console.log('Error: User not found');
           var err = new Error('User not found.');
           err.status = 401;
           return callback(err);
         }
         bcrypt.compare(password, user.password, function (err, result) {
           if (result === true) {
+            console.log(result);
+            console.log("password match");
             return callback(null, user);
           } else {
             return callback();

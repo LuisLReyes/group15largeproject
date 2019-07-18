@@ -165,9 +165,11 @@ userRoutes.route('/add').post(function(req,res){
 userRoutes.route('/login').post(function(req,res){
     User.authenticate(req.body.user_name,req.body.password, function(error, user){
         if( error || !user){
+            console.log('Login Error: ' + error);
             return res.status(401).json({'message':'Login failed'});
         } else {
             req.session.userId = user._id;
+            console.log('Logging in user' + user._id);
             return res.status(200).json({'message':'Login Successful'});
         }
     })

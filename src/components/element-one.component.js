@@ -10,6 +10,15 @@ export default class ElementOne extends Component {
                 console.log(res.data);
             })
     }
+    loginTester(){
+        axios.post('http://localhost:4000/user/login',{
+            user_name: 'Luis1234',
+            password: 'hashtesting'
+        })
+        .then(res=> {
+            console.log(res.data);
+        })
+    }
 
     render() {
         return (
