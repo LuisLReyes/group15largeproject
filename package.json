@@ -15,9 +15,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "(cd src && cd backend && npm start) && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "cd src/backend && node server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
