@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import elementLogin from "./components/login.component";
 import elementHome from "./components/home.component";
 import elementAddGroup from "./components/addgroup.component";
+import elementOne from "./components/element-one.component";
 
 
 class App extends Component {
@@ -35,23 +36,24 @@ class App extends Component {
             </div>
           </nav>
           <br/>
-          <div class="row">
-            <div class="col-3">
-              <div class="row">
-                <div class="col">
+          <div className="row">
+            <div className="col-3">
+              <div className="row">
+                <div className="col">
                   <p>Your Groups   </p>
                 </div>
-                <div class="col">
-                  <button class="btn-primary btn-sm">
+                <div className="col">
+                  <button className="btn-primary btn-sm">
                     +
                   </button>
                 </div>
               </div>
             </div>
-            <div class="col-8">
+            <div className="col-8">
               <Route path="/" exact component={elementHome} />
               <Route path="/login" component={elementLogin} />
               <Route path="/addgroup" component={elementAddGroup} />
+              <Route path="/testing" component={elementOne} />
             </div>
           </div>
         </div>
