@@ -37,7 +37,7 @@ export default class ElementOne extends Component {
             <div>
             <p>Welcome to Chit-Chat.</p>
             <p>Log in to have access for enhanced features</p>
-                <div class="row justify-content-center">
+                <div className="row justify-content-center">
                   <div>
                     <label>
                       Username
@@ -63,16 +63,16 @@ export default class ElementOne extends Component {
               </div>
           </div>
 
-                <div class="row justify-content-center">
-                  <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block" onClick={this.handleLogin} >Login</button>
+                <div className="row justify-content-center">
+                  <div className="col-4">
+                    <button type="submit" className="btn btn-primary btn-block" onClick={this.handleLogin} >Login</button>
                   <br/>
                 </div>
                 </div>
 
-                <div class="row justify-content-center">
-                  <div class="col-4"><button type="submit" class="btn btn-primary btn-block" value="Submit" >Sign Up</button></div>
-                  <div class="col-4"><button type="submit" class="btn btn-secondary btn-block" value="Submit" >Continue Anoymously</button></div>
+                <div className="row justify-content-center">
+                  <div className="col-4"><button type="submit" className="btn btn-primary btn-block" value="Submit" >Sign Up</button></div>
+                  <div className="col-4"><button type="submit" className ="btn btn-secondary btn-block" value="Submit" >Continue Anoymously</button></div>
                 </div>
             </div>
         )
