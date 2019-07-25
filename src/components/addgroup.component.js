@@ -31,7 +31,7 @@ export default class ElementThree extends Component {
         return (
             <div>
                 <button type="button"className="btn btn-primary btn-block mb-4" onClick={this.fetchGroups} > 
-                	Create New Study Group
+                	Create New Study Group (Test)
                 </button>
 
                 <input type="text" className="form-control" placeholder="Search Group" aria-label="Search" />
